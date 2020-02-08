@@ -13,7 +13,7 @@ import {
   MatGridListModule
 } from '@angular/material';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import { FlexLayoutModule } from '@angular/flex-layout';
+// import { FlexLayoutModule } from '@angular/flex-layout';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -45,7 +45,7 @@ import { GridProductsComponent } from './grid-products/grid-products.component';
     MatIconModule,
     MatGridListModule,
     FormsModule, ReactiveFormsModule,
-    FlexLayoutModule
+    // FlexLayoutModule
   ],
   providers: [],
   bootstrap: [AppComponent]
