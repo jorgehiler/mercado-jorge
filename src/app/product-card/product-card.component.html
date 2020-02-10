@@ -1,11 +1,29 @@
-<mat-card>
-  <mat-card-header>
+<!-- <mat-card class="container">
   <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
-  </mat-card-header>
+  <mat-card-content>
     <mat-card-title>
       <h4 class="mat-h3">{{article.nameArticle}}</h4>
     </mat-card-title>
     <mat-card-subtitle>{{article.seller}}</mat-card-subtitle>
     <mat-card-title>{{article.price}}</mat-card-title>
-</mat-card>
+  </mat-card-content>
+</mat-card> -->
 
+<!-- <div class="container">
+  <div style="color: aqua;">imagen</div>
+  <div style="color: black;">info</div>
+</div> -->
+
+<mat-card>
+  <div class="media">
+    <div class="image"><img src="" alt="Img product"></div>
+    <div class="content">
+      <p class="title">{{article.nameArticle}}</p>
+      <p class="price">{{article.price}}</p>
+      <p class="seller">{{article.seller}}</p>
+      <!-- <span class="title">{{article.nameArticle}}</span>
+      <span class="price">{{article.price}}</span>
+      <span class="seller">{{article.seller}}</span> -->
+    </div>
+  </div>
+</mat-card>

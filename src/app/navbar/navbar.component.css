@@ -41,7 +41,7 @@ mat-toolbar-row {
 }
 
 .barra{
-  width: 50%;
+  width: 500px;
 }
 
 .mat-form-field-infix {
@@ -58,7 +58,7 @@ mat-toolbar-row {
   display: inline-block;
   position: static;
   text-align: left;
-  width: -webkit-fill-available;
+  width: 500px;
 }
 
 .icon-search{

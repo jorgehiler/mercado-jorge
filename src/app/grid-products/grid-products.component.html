@@ -1,10 +1,9 @@
 <div class="container">
-  <mat-grid-list [cols]="cols" rowHeight="4:5" gutterSize='5'>
+  <mat-grid-list [cols]="cols" rowHeight="175px" gutterSize='30px'>
   <mat-grid-tile *ngFor="let article of pagedList">
     <app-product-card [article] = 'article'></app-product-card>
   </mat-grid-tile>
 </mat-grid-list>
-
 <mat-paginator [length]="listArticles.length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions" (page)="pageEvent = OnPageChange($event)">
 </mat-paginator>
 </div>

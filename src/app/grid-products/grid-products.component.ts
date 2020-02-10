@@ -27,9 +27,9 @@ export class GridProductsComponent implements OnInit {
   }
 
   constructor() {
-    this.cols = 3;
+    this.cols = 4;
     this.listArticles = [
-      new Article('Camiseta1', 'Jorge', 50000),
+      new Article('Camiseta1 desbodamiento de texto demasiado graandews', 'Jorge', 50000),
       new Article('Camiseta2', 'Jorge', 50000),
       new Article('Camiseta3', 'Jorge', 50000),
       new Article('Camiseta4', 'Jorge', 50000),
