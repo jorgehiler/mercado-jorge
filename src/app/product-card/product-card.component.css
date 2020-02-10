@@ -29,6 +29,7 @@ mat-card {
 .media .content {
   flex: 1;
   padding: 10px;
+  width: max-content;
 }
 
 .image{
@@ -53,6 +54,13 @@ span {
  text-overflow: ellipsis; 
 
 } */
+
+p {
+  width: 170px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 
 
 
