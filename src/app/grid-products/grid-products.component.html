@@ -5,7 +5,7 @@
   </mat-grid-tile>
 </mat-grid-list>
 
-<mat-paginator [length]="length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions" (page)="pageEvent = OnPageChange($event)">
+<mat-paginator [length]="listArticles.length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions" (page)="pageEvent = OnPageChange($event)">
 </mat-paginator>
 </div>
 

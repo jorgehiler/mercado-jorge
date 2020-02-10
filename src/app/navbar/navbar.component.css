@@ -25,4 +25,46 @@
   cursor: pointer;
 }
 
+.search{
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  height: 60px;
+}
+
+mat-toolbar-row {
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  height: min-content;
+  padding: initial;
+}
+
+.barra{
+  width: 50%;
+}
+
+.mat-form-field-infix {
+  padding: 0.5em 0;
+  border-top: 0%;
+}
+
+.mat-form-field-appearance-standard .mat-form-field-flex {
+  padding-top: 0%;
+}
+
+
+.mat-form-field {
+  display: inline-block;
+  position: static;
+  text-align: left;
+  width: -webkit-fill-available;
+}
+
+.icon-search{
+  display: flex;
+}
+
+
+
 

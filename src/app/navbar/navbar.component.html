@@ -1,14 +1,17 @@
 <mat-toolbar color="primary">
-  <span>MercadoLibre</span>
-  <span class="fill-remaining-space"></span>
-  <div>
-    <form [ngClass]="{'invisible':!flagInputSearch, 'example-form': true}">
-      <mat-form-field appearance="standard">
-        <input matInput placeholder="Buscar producto">
-      </mat-form-field>
-    </form>
-  </div>
-  <div>
-    <mat-icon matSuffix class="pointer">search</mat-icon>
-  </div>
+  <mat-toolbar-row class="title">
+    <span>MercadoJorge</span>
+  </mat-toolbar-row>
+  <mat-toolbar-row class="search">
+    <div class="barra">
+      <form [ngClass]="{'invisible':!flagInputSearch}">
+        <mat-form-field appearance="standard">
+          <input matInput placeholder="Buscar producto">
+        </mat-form-field>
+      </form>
+    </div>
+    <div class="icon-search">
+      <mat-icon matSuffix class="pointer">search</mat-icon>
+    </div>
+  </mat-toolbar-row>
 </mat-toolbar>
