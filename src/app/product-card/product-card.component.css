@@ -11,3 +11,7 @@
   width: calc(100% - 70px);
   height: calc(100% - 70px);
 } */
+
+mat-card {
+  flex-direction: row;
+}
