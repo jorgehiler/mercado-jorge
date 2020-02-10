@@ -1,12 +1,14 @@
 export class Article {
 
-  nameArticle: string;
+  title: string;
   seller: string;
+  thumbnail: string
   price: number;
 
-  constructor(nameArticle: string, seller: string, price: number) {
-    this.nameArticle = nameArticle;
+  constructor(title: string, seller: string, price: number, thumbnail: string) {
+    this.title = title;
     this.seller = seller;
     this.price = price;
+    this.thumbnail = thumbnail;
   }
 }

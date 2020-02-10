@@ -13,8 +13,7 @@ import {
   MatGridListModule
 } from '@angular/material';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-// import { FlexLayoutModule } from '@angular/flex-layout';
-
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -22,6 +21,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { ProductCardComponent } from './product-card/product-card.component';
 import { GridProductsComponent } from './grid-products/grid-products.component';
+import { DataService } from './data.service';
 
 @NgModule({
   declarations: [
@@ -45,9 +45,10 @@ import { GridProductsComponent } from './grid-products/grid-products.component';
     MatIconModule,
     MatGridListModule,
     FormsModule, ReactiveFormsModule,
+    HttpClientModule
     // FlexLayoutModule
   ],
-  providers: [],
+  providers: [DataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

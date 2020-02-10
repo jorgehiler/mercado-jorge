@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PageEvent } from '@angular/material';
 import { Article } from '../article';
+import { DataService } from '../data.service';
 
 @Component({
   selector: 'app-grid-products',
@@ -10,12 +11,13 @@ import { Article } from '../article';
 export class GridProductsComponent implements OnInit {
 
   // MatPaginator Inputs
-  length = 25;
+  length = 50;
   pageSize = 6;
   pageSizeOptions: number[] = [3, 6, 9, 12];
-  listArticles: Article[];
+  listArticles: any[];
   pagedList: Article[];
   cols: number;
+  resultSearch: any;
 
   // MatPaginator Output
   pageEvent: PageEvent;
@@ -26,21 +28,10 @@ export class GridProductsComponent implements OnInit {
     }
   }
 
-  constructor() {
+  constructor(private searchService: DataService) {
+    this.getSearch('gafas');
     this.cols = 4;
-    this.listArticles = [
-      new Article('Camiseta1 desbodamiento de texto demasiado graandews Camiseta1 desbodamiento de texto demasiado graandews', 'Jorge', 50000),
-      new Article('Camiseta2', 'Jorge', 50000),
-      new Article('Camiseta3', 'Jorge', 50000),
-      new Article('Camiseta4', 'Jorge', 50000),
-      new Article('Camiseta5', 'Jorge', 50000),
-      new Article('Camiseta6', 'Jorge', 50000),
-      new Article('Camiseta7', 'Jorge', 50000),
-      new Article('Camiseta8', 'Jorge', 50000),
-      new Article('Camiseta9', 'Jorge', 50000),
-      new Article('Camiseta10', 'Jorge', 50000),
-      new Article('Camiseta11', 'Jorge', 50000),
-      new Article('Camiseta12', 'Jorge', 50000)];
+    this.listArticles = [];
   }
 
   ngOnInit() {
@@ -56,6 +47,17 @@ export class GridProductsComponent implements OnInit {
       endIndex = this.length;
     }
     this.pagedList = this.listArticles.slice(startIndex, endIndex);
+  }
+
+  getSearch(txtSearch: string){
+    this.searchService.getSearch(txtSearch)
+    .subscribe(
+      res => { console.log(res);
+               this.resultSearch = res;
+               this.listArticles = this.resultSearch.results;
+              },
+      err => console.log('error' + err)
+    )
   }
 
 }

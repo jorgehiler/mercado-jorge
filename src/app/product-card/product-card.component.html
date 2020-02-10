@@ -16,11 +16,11 @@
 
 <mat-card>
   <div class="media">
-    <div class="image"><img src="" alt="Img product"></div>
+    <div class="image"><img [src]="article.thumbnail" alt="Img product"></div>
     <div class="content">
-      <p class="title">{{article.nameArticle}}</p>
+      <p class="title">{{article.title}}</p>
       <p class="price">{{article.price}}</p>
-      <p class="seller">{{article.seller}}</p>
+      <!-- <p class="seller">{{article.seller}}</p> -->
       <!-- <span class="title">{{article.nameArticle}}</span>
       <span class="price">{{article.price}}</span>
       <span class="seller">{{article.seller}}</span> -->
