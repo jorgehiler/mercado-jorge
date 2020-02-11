@@ -1,6 +1,6 @@
 <div class="container">
   <mat-grid-list [cols]="cols" rowHeight="175px" gutterSize='30px'>
-  <mat-grid-tile *ngFor="let article of listArticles">
+  <mat-grid-tile *ngFor="let article of pagedList">
     <app-product-card [article] = 'article'></app-product-card>
   </mat-grid-tile>
 </mat-grid-list>

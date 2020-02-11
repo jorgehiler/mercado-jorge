@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { PageEvent } from '@angular/material';
 import { Article } from '../article';
 import { DataService } from '../data.service';
+import { Observable, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-grid-products',
@@ -14,9 +15,12 @@ export class GridProductsComponent implements OnInit {
   length=50;
   pageSize = 6;
   pageSizeOptions: number[] = [3, 6, 9, 12];
-  @Input() listArticles: any;
+  @Input() listArticles: any[];
   pagedList: Article[];
   cols: number;
+
+  @Input() events: Observable<void>;
+  eventsSubscription: Subscription;
 
   // MatPaginator Output
   pageEvent: PageEvent;
@@ -30,16 +34,26 @@ export class GridProductsComponent implements OnInit {
   constructor(private searchService: DataService) {
     this.listArticles = [];
     console.log(this.listArticles);
-    this.length = this.listArticles.length;
+    // this.length = this.listArticles.length;
     // this.getSearch('gafas');
     this.cols = 4;
     this.listArticles = [];
   }
 
   ngOnInit() {
+    this.listArticles = [];
     // this.pagedList = this.listArticles.slice(0, this.pageSize);
-
+      this.eventsSubscription = this.events.subscribe(() => {
+        console.log("sucedio");
+        this.pagedList = this.listArticles.slice(0, this.pageSize);
+      });
   }
+
+  ngOnDestroy() {
+    this.eventsSubscription.unsubscribe();
+  }
+
+
 
   OnPageChange(event: PageEvent) {
     console.log(`Current page 1: ${event.pageIndex}`);
@@ -49,6 +63,8 @@ export class GridProductsComponent implements OnInit {
       endIndex = this.length;
     }
     this.pagedList = this.listArticles.slice(startIndex, endIndex);
+    this.pageSize = event.pageSize;
+    console.log("page size" + this.pageSize)
   }
 
   // getSearch(txtSearch: string){

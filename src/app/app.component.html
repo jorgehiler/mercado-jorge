@@ -1,4 +1,4 @@
 <router-outlet></router-outlet>
 <app-navbar (searchedArticles)="searchArticles($event)"></app-navbar>
-<app-grid-products [listArticles]="listArticles"></app-grid-products>
+<app-grid-products [events]="eventsSubject.asObservable()" [listArticles]="listArticles"></app-grid-products>
 <!-- <app-product-card [article] = 'article'></app-product-card> -->
