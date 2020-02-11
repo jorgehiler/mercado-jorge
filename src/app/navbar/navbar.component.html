@@ -6,7 +6,7 @@
     <div class="barra">
       <form [ngClass]="{'invisible':!flagInputSearch}">
         <mat-form-field appearance="standard">
-          <input matInput placeholder="Buscar producto">
+          <input matInput placeholder="Buscar producto" #box (keyup.enter)="searchArti(box.value)">
         </mat-form-field>
       </form>
     </div>

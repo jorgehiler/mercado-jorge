@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { PageEvent } from '@angular/material';
 import { Article } from '../article';
 import { DataService } from '../data.service';
@@ -11,13 +11,12 @@ import { DataService } from '../data.service';
 export class GridProductsComponent implements OnInit {
 
   // MatPaginator Inputs
-  length = 50;
+  length=50;
   pageSize = 6;
   pageSizeOptions: number[] = [3, 6, 9, 12];
-  listArticles: any[];
+  @Input() listArticles: any;
   pagedList: Article[];
   cols: number;
-  resultSearch: any;
 
   // MatPaginator Output
   pageEvent: PageEvent;
@@ -29,13 +28,16 @@ export class GridProductsComponent implements OnInit {
   }
 
   constructor(private searchService: DataService) {
-    this.getSearch('gafas');
+    this.listArticles = [];
+    console.log(this.listArticles);
+    this.length = this.listArticles.length;
+    // this.getSearch('gafas');
     this.cols = 4;
     this.listArticles = [];
   }
 
   ngOnInit() {
-    this.pagedList = this.listArticles.slice(0, this.pageSize);
+    // this.pagedList = this.listArticles.slice(0, this.pageSize);
 
   }
 
@@ -49,15 +51,15 @@ export class GridProductsComponent implements OnInit {
     this.pagedList = this.listArticles.slice(startIndex, endIndex);
   }
 
-  getSearch(txtSearch: string){
-    this.searchService.getSearch(txtSearch)
-    .subscribe(
-      res => { console.log(res);
-               this.resultSearch = res;
-               this.listArticles = this.resultSearch.results;
-              },
-      err => console.log('error' + err)
-    )
-  }
+  // getSearch(txtSearch: string){
+  //   this.searchService.getSearch(txtSearch)
+  //   .subscribe(getSearch
+  //     res => { console.log(res);
+  //              this.resultSearch = res;
+  //              this.listArticles = this.resultSearch.results;
+  //             },
+  //     err => console.log('error' + err)
+  //   )
+  // }
 
 }
