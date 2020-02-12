@@ -39,10 +39,9 @@ export class AppComponent implements OnInit {
           this.resultSearch = res;
           this.listArticles = this.resultSearch.results;
           console.log('lista de articulos en component' + this.listArticles);
-          this.emitEventToChild();
         },
         err => console.log('error' + err)
-      )
+      );
   }
 
 

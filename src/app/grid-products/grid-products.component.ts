@@ -1,5 +1,5 @@
-import { Component, OnInit, Input, OnChanges, DoCheck } from '@angular/core';
-import { PageEvent } from '@angular/material';
+import { Component, OnInit, Input, OnChanges, DoCheck, SimpleChanges } from '@angular/core';
+import { PageEvent, MatPaginatorIntl } from '@angular/material';
 import { Article } from '../article';
 import { DataService } from '../data.service';
 import { Observable, Subscription } from 'rxjs';
@@ -9,16 +9,20 @@ import { Observable, Subscription } from 'rxjs';
   templateUrl: './grid-products.component.html',
   styleUrls: ['./grid-products.component.css']
 })
-export class GridProductsComponent implements OnInit, DoCheck {
-  
-  ngDoCheck(): void {
-    this.pagedList = this.listArticles.slice(0, this.pageSize);
-    console.log("una y mil veces");
+export class GridProductsComponent implements OnInit, OnChanges{
+
+  ngOnChanges(changes: SimpleChanges) {
+    if(changes.listArticles){
+      console.log("qui fue")
+      this.pagedList = this.listArticles.slice(0, this.pageSize);
+
+    }
+    // You can also use categoryId.previousValue and
+    // categoryId.firstChange for comparing old and new values
   }
- 
 
   // MatPaginator Inputs
-  length=50;
+  length = 50;
   pageSize = 6;
   pageSizeOptions: number[] = [3, 6, 9, 12];
   @Input() listArticles: any[];
@@ -49,11 +53,11 @@ export class GridProductsComponent implements OnInit, DoCheck {
   ngOnInit() {
     this.listArticles = [];
     // this.pagedList = this.listArticles.slice(0, this.pageSize);
-      this.eventsSubscription = this.events.subscribe(() => {
-        console.log("nueva bussqueda");
-        this.pagedList = this.listArticles.slice(0, this.pageSize);
-        console.log(this.listArticles);
-      });
+    this.eventsSubscription = this.events.subscribe(() => {
+      console.log("nueva bussqueda");
+      this.pagedList = this.listArticles.slice(0, this.pageSize);
+      console.log(this.listArticles);
+    });
   }
 
   ngOnDestroy() {
