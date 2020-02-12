@@ -32,7 +32,7 @@ export class AppComponent implements OnInit {
   }
 
   getSearch(txtSearch: string) {
-    this.searchService.getSearch(txtSearch)
+    this.searchService.getSearch(txtSearch, '51')
       .subscribe(
         res => {
           console.log(res);

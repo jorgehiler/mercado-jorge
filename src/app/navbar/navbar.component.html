@@ -4,7 +4,7 @@
   </mat-toolbar-row>
   <mat-toolbar-row class="search">
     <div class="barra">
-      <form [ngClass]="{'invisible':!flagInputSearch}">
+      <form [ngClass]="{'invisible':!flagInputSearch}" autocomplete="off">
         <mat-form-field appearance="standard">
           <input matInput placeholder="Buscar producto" #box (keyup.enter)="searchArti(box.value)">
         </mat-form-field>

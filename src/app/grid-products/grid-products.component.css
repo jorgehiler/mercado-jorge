@@ -7,3 +7,8 @@
 div {
   margin-top: 3%;
 }
+
+
+mat-paginator {
+  background-color: #ebebeb;
+}

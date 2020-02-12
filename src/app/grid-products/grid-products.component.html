@@ -4,6 +4,7 @@
     <app-product-card [article] = 'article'></app-product-card>
   </mat-grid-tile>
 </mat-grid-list>
-<mat-paginator #paginator [length]="length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions" (page)="pageEvent = OnPageChange($event)"></mat-paginator>
+<mat-paginator #paginator [length]="length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions" (page)="pageEvent = OnPageChange($event)">
+</mat-paginator>
 </div>
 
