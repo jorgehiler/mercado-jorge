@@ -14,16 +14,22 @@
   <div style="color: black;">info</div>
 </div> -->
 
-<mat-card>
+<!-- <mat-card>
   <div class="media">
     <div class="image"><img [src]="article.thumbnail" alt="Img product"></div>
     <div class="content">
       <p class="title">{{article.title}}</p>
       <p class="price">{{article.price}}</p>
-      <!-- <p class="seller">{{article.seller}}</p> -->
-      <!-- <span class="title">{{article.nameArticle}}</span>
-      <span class="price">{{article.price}}</span>
-      <span class="seller">{{article.seller}}</span> -->
+
     </div>
   </div>
+</mat-card> -->
+
+<div #card (window:resize)="width=card.getBoundingClientRect().width">
+<mat-card>
+  <img mat-card-image  [src]="article.thumbnail" alt="Photo">
+  <mat-card-title class="text-oneline align-start"><h4 class="mat-h3">{{article.title}}</h4></mat-card-title>
+  <mat-card-subtitle class="align-start">Jorge Hiler</mat-card-subtitle>
+  <mat-card-title class="align-start">{{article.price}}</mat-card-title>
 </mat-card>
+</div>

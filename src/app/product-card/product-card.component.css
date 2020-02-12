@@ -7,67 +7,36 @@
   background-size: cover;
 }
 
+.text-oneline {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.mat-card {
+  display:inline-block;
+  width:200px;
+  height:180px;
+  margin:0 10px;
+}
+
+mat-card img{
+  object-fit: cover; /*this makes the image in src fit to the size specified below*/
+  width: auto;
+  height: fit-content;
+}
+
+mat-card {
+  text-align: center;
+}
+
+.align-start {
+  text-align: start;
+}
+
+
+
 /* mat-card {
   width: calc(100% - 70px);
   height: calc(100% - 70px);
 } */
-
-mat-card {
-  flex-direction: row;
-}
-
-.container{
-  display: inline-flex;
-  width: 40%;
-}
-
-.media {
-  display: flex;
-  align-items: flex-start;
-  font-size: 20px;
-}
-.media .content {
-  flex: 1;
-  padding: 10px;
-  width: max-content;
-}
-
-.image{
-  width: 160px;
-  height: 160px;
-}
-
-.price{
-  font-size: 0.9em;  
-}
-
-.seller{
-  font-size: 0.5em;
-}
-
-mat-card {
-  background-color: whitesmoke;
-}
-/* 
-span {
- display: inline-flex;
- text-overflow: ellipsis; 
-
-} */
-
-p {
-  width: 170px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-
-
-  /* display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
-  overflow: hidden; */
-}
-
-
-
