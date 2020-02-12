@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnChanges, DoCheck, SimpleChanges, ViewChild } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, DoCheck, SimpleChanges, ViewChild, EventEmitter, Output } from '@angular/core';
 import { PageEvent, MatPaginatorIntl, MatPaginator } from '@angular/material';
 import { Article } from '../article';
 import { DataService } from '../data.service';
@@ -18,14 +18,17 @@ export class GridProductsComponent implements OnInit, OnChanges{
   pagedList: Article[];
   cols: number;
   @ViewChild('paginator', {static: false}) paginator: MatPaginator;
+  @Output() changePaginator = new EventEmitter<{offSet: number}>();
+  @Input() totalResults: number;
+
 
   pageEvent: PageEvent;
 
 
   ngOnChanges(changes: SimpleChanges) {
-    if(changes.listArticles){
+    if(changes.listArticles) {
       this.pagedList = this.listArticles.slice(0, this.pageSize);
-      this.paginator.pageIndex = 0;
+      // this.paginator.pageIndex = 0;
     }
   }
 
@@ -36,6 +39,7 @@ export class GridProductsComponent implements OnInit, OnChanges{
   }
 
   constructor(private searchService: DataService) {
+    this.totalResults=0;
     this.listArticles = [];
     console.log(this.listArticles);
     this.cols = 5;
@@ -55,7 +59,12 @@ export class GridProductsComponent implements OnInit, OnChanges{
     }
     this.pagedList = this.listArticles.slice(startIndex, endIndex);
     this.pageSize = event.pageSize;
-    console.log("page size" + this.pageSize)
+    let next = event.pageIndex - event.previousPageIndex;
+
+    this.changePaginator.emit({offSet: event.pageIndex});
+    console.log("Pagina previa " + event.previousPageIndex);
+    console.log("Pagina actual " + event.pageIndex);
+    console.log("page size" + this.pageSize);
   }
 
 

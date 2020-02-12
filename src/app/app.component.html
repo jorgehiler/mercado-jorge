@@ -1,4 +1,4 @@
 <router-outlet></router-outlet>
 <app-navbar (searchedArticles)="searchArticles($event)"></app-navbar>
-<app-grid-products  [listArticles]="listArticles" style="background-color: #ebebeb;"></app-grid-products>
+<app-grid-products (changePaginator)="searchArticlesOffset($event)" [totalResults]="totalResults" [listArticles]="listArticles" style="background-color: #ebebeb;"></app-grid-products>
 <!-- <app-product-card [article] = 'article'></app-product-card> -->

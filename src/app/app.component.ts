@@ -14,6 +14,8 @@ export class AppComponent implements OnInit {
   txtSearch: string;
   resultSearch: any;
   listArticles: any[]
+  totalResults: string;
+
 
   eventsSubject: Subject<void> = new Subject<void>();
 
@@ -27,17 +29,30 @@ export class AppComponent implements OnInit {
   }
 
   searchArticles(elementSearch: { txtSearch: string }) { //Este evento se origino en navbar
+    this.txtSearch = elementSearch.txtSearch;
     console.log('Desde component: ' + elementSearch.txtSearch);
-    this.getSearch(elementSearch.txtSearch);
+    this.getSearch(elementSearch.txtSearch, '0');
   }
 
-  getSearch(txtSearch: string) {
-    this.searchService.getSearch(txtSearch, '51')
+  searchArticlesOffset(elementSearch: { offSet: any}) { //Este evento se origino en paginator
+    let offSet = elementSearch.offSet*50 + 1;
+    if(offSet === 1) {
+      offSet = 0;
+    }
+    console.log("Buca por paginator")
+    console.log(this.txtSearch);
+    this.getSearch(this.txtSearch, '' + offSet);
+  }
+
+  getSearch(txtSearch: string, offSet: string) {
+    this.searchService.getSearch(txtSearch, offSet)
       .subscribe(
         res => {
           console.log(res);
           this.resultSearch = res;
           this.listArticles = this.resultSearch.results;
+          this.totalResults = this.resultSearch.paging.total;
+          console.log(`total Resultados: ${this.totalResults}`);
           console.log('lista de articulos en component' + this.listArticles);
         },
         err => console.log('error' + err)
