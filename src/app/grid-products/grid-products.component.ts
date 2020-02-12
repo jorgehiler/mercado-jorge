@@ -11,9 +11,9 @@ import { Observable, Subscription } from 'rxjs';
 })
 export class GridProductsComponent implements OnInit, OnChanges{
 
-  length = 50;
-  pageSize = 6;
-  pageSizeOptions: number[] = [3, 6, 9, 12];
+  length = 50; //Cantidad de resultados
+  pageSize = 50;
+  pageSizeOptions: number[] = [3, 6, 9, 12, 50];
   @Input() listArticles: any[];
   pagedList: Article[];
   cols: number;
@@ -38,7 +38,7 @@ export class GridProductsComponent implements OnInit, OnChanges{
   constructor(private searchService: DataService) {
     this.listArticles = [];
     console.log(this.listArticles);
-    this.cols = 4;
+    this.cols = 5;
     this.listArticles = [];
   }
 

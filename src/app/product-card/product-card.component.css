@@ -15,7 +15,7 @@
 
 .mat-card {
   display:inline-block;
-  width:200px;
+  width:140px;
   height:180px;
   margin:0 10px;
 }
@@ -32,6 +32,10 @@ mat-card {
 
 .align-start {
   text-align: start;
+}
+
+mat-card-title {
+  margin-bottom: 1px;
 }
 
 
