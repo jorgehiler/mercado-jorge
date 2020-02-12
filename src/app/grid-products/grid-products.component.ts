@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, DoCheck } from '@angular/core';
 import { PageEvent } from '@angular/material';
 import { Article } from '../article';
 import { DataService } from '../data.service';
@@ -9,7 +9,13 @@ import { Observable, Subscription } from 'rxjs';
   templateUrl: './grid-products.component.html',
   styleUrls: ['./grid-products.component.css']
 })
-export class GridProductsComponent implements OnInit {
+export class GridProductsComponent implements OnInit, DoCheck {
+  
+  ngDoCheck(): void {
+    this.pagedList = this.listArticles.slice(0, this.pageSize);
+    console.log("una y mil veces");
+  }
+ 
 
   // MatPaginator Inputs
   length=50;
@@ -44,16 +50,15 @@ export class GridProductsComponent implements OnInit {
     this.listArticles = [];
     // this.pagedList = this.listArticles.slice(0, this.pageSize);
       this.eventsSubscription = this.events.subscribe(() => {
-        console.log("sucedio");
+        console.log("nueva bussqueda");
         this.pagedList = this.listArticles.slice(0, this.pageSize);
+        console.log(this.listArticles);
       });
   }
 
   ngOnDestroy() {
     this.eventsSubscription.unsubscribe();
   }
-
-
 
   OnPageChange(event: PageEvent) {
     console.log(`Current page 1: ${event.pageIndex}`);
