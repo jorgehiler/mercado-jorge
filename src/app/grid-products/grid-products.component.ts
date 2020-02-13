@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnChanges, DoCheck, SimpleChanges, ViewChild, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, DoCheck, SimpleChanges, ViewChild, EventEmitter, Output, HostListener } from '@angular/core';
 import { PageEvent, MatPaginatorIntl, MatPaginator } from '@angular/material';
 import { Article } from '../article';
 import { DataService } from '../data.service';
@@ -21,6 +21,9 @@ export class GridProductsComponent implements OnInit, OnChanges{
   @Output() changePaginator = new EventEmitter<{offSet: number}>();
   @Input() totalResults: number;
 
+  screenHeight: number;
+  screenWidth: number;
+
 
   pageEvent: PageEvent;
 
@@ -41,6 +44,7 @@ export class GridProductsComponent implements OnInit, OnChanges{
   ngOnChanges(changes: SimpleChanges) {
     if(changes.listArticles) {
       this.pagedList = this.listArticles.slice(0, this.pageSize);
+      this.getScreenSize();
       // this.paginator.pageIndex = 0;
     }
   }
@@ -80,6 +84,30 @@ export class GridProductsComponent implements OnInit, OnChanges{
     console.log("Pagina previa " + event.previousPageIndex);
     console.log("Pagina actual " + event.pageIndex);
     console.log("page size" + this.pageSize);
+  }
+
+  @HostListener('window:resize', ['$event'])
+  getScreenSize(event?) {
+    this.screenHeight = window.innerHeight;
+    this.screenWidth = window.innerWidth;
+    console.log(this.screenHeight, this.screenWidth);
+    if (this.screenWidth >= 1650) {
+      this.cols=8;
+    } else if(this.screenWidth >= 1450) {
+      this.cols=7;
+    } else if(this.screenWidth >= 1200) {
+      this.cols=6;
+    } else if(this.screenWidth >= 1000) {
+      this.cols=5;
+    }  else if(this.screenWidth >= 800) {
+      this.cols=4;
+    } else if(this.screenWidth >= 600) {
+      this.cols=3;
+    } else if(this.screenWidth >= 400) {
+      this.cols=2;
+    } else {
+      this.cols=1;
+    }
   }
 
 
