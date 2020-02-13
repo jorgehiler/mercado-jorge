@@ -25,6 +25,19 @@ export class GridProductsComponent implements OnInit, OnChanges{
   pageEvent: PageEvent;
 
 
+  @Input() events: Observable<void>;
+  
+  private eventsSubscription: Subscription;
+
+//perueba
+  ngOnDestroy() {
+    this.eventsSubscription.unsubscribe();
+  }
+
+  updateIndex(index: number){
+    this.paginator.pageIndex = 0;
+  }
+
   ngOnChanges(changes: SimpleChanges) {
     if(changes.listArticles) {
       this.pagedList = this.listArticles.slice(0, this.pageSize);
@@ -47,7 +60,9 @@ export class GridProductsComponent implements OnInit, OnChanges{
   }
 
   ngOnInit() {
-    this.listArticles = [];
+    this.listArticles = [];    
+    this.eventsSubscription = this.events.subscribe(() => {console.log("Update index, new search"); this.updateIndex(0)});
+
   }
 
   OnPageChange(event: PageEvent) {

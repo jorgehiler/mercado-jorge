@@ -15,11 +15,7 @@ export class AppComponent implements OnInit {
   resultSearch: any;
   listArticles: any[]
   totalResults: string;
-
-
   eventsSubject: Subject<void> = new Subject<void>();
-
-
 
   constructor(private searchService: DataService) {
   }
@@ -32,6 +28,7 @@ export class AppComponent implements OnInit {
     this.txtSearch = elementSearch.txtSearch;
     console.log('Desde component: ' + elementSearch.txtSearch);
     this.getSearch(elementSearch.txtSearch, '0');
+    this.emitEventToChild();
   }
 
   searchArticlesOffset(elementSearch: { offSet: any}) { //Este evento se origino en paginator
