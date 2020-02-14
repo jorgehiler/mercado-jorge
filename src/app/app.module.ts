@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
   MatButtonModule,
   MatPaginatorModule,
@@ -10,7 +11,8 @@ import {
   MatFormFieldModule,
   MatAutocompleteModule,
   MatInputModule,
-  MatGridListModule
+  MatGridListModule,
+  MatProgressSpinnerModule
 } from '@angular/material';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
@@ -49,7 +51,9 @@ import { CardNoticeComponent } from './card-notice/card-notice.component';
     MatIconModule,
     MatGridListModule,
     FormsModule, ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatProgressSpinnerModule,
+    BrowserAnimationsModule
     // FlexLayoutModule
   ],
   providers: [DataService],

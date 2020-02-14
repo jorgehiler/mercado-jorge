@@ -20,6 +20,7 @@ export class GridProductsComponent implements OnInit, OnChanges{
   @ViewChild('paginator', {static: false}) paginator: MatPaginator;
   @Output() changePaginator = new EventEmitter<{offSet: number}>();
   @Input() totalResults: number;
+  @Input() loading: boolean;
   cardNotice: boolean;
 
   screenHeight: number;
@@ -43,11 +44,14 @@ export class GridProductsComponent implements OnInit, OnChanges{
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    if(changes.listArticles) {
+    if(changes.listArticles && this.listArticles) {
+      console.log("arricles")
+      console.log(this.listArticles)
       this.pagedList = this.listArticles.slice(0, this.pageSize);
       this.getScreenSize();
-      if(this.pagedList.length === 0) {
+      if(this.pagedList.length === 0) {  //No volvera a ser cero nunca mas 
         this.cardNotice = true;
+        // this.loading = false;
         console.log('mostrar aviso');
       } else {
         this.cardNotice = false;
@@ -66,15 +70,13 @@ export class GridProductsComponent implements OnInit, OnChanges{
   constructor(private searchService: DataService) {
     this.cardNotice = false;
     this.totalResults=0;
-    this.listArticles = [];
-    console.log(this.listArticles);
+    this.listArticles = [new Article('', '', 0, '', ''), new Article('', '', 0, '', ''), new Article('', '', 0, '', ''), new Article('', '', 0, '', ''), new Article('', '', 0, '', ''), new Article('', '', 0, '', ''),new Article('', '', 0, '', ''), new Article('', '', 0, '', ''),new Article('', '', 0, '', ''), new Article('', '', 0, '', ''), new Article('', '', 0, '', ''), new Article('', '', 0, '', ''), new Article('', '', 0, '', ''), new Article('', '', 0, '', ''), new Article('', '', 0, '', ''), new Article('', '', 0, '', ''),new Article('', '', 0, '', ''), new Article('', '', 0, '', ''),new Article('', '', 0, '', ''), new Article('', '', 0, '', ''), new Article('', '', 0, '', ''), new Article('', '', 0, '', ''), new Article('', '', 0, '', ''), new Article('', '', 0, '', ''), new Article('', '', 0, '', ''), new Article('', '', 0, '', ''),new Article('', '', 0, '', ''), new Article('', '', 0, '', ''),new Article('', '', 0, '', ''), new Article('', '', 0, '', ''), new Article('', '', 0, '', ''), new Article('', '', 0, '', ''), new Article('', '', 0, '', ''), new Article('', '', 0, '', ''), new Article('', '', 0, '', ''), new Article('', '', 0, '', ''),new Article('', '', 0, '', ''), new Article('', '', 0, '', ''),new Article('', '', 0, '', ''), new Article('', '', 0, '', ''), new Article('', '', 0, '', ''), new Article('', '', 0, '', ''), new Article('', '', 0, '', ''), new Article('', '', 0, '', ''), new Article('', '', 0, '', ''), new Article('', '', 0, '', ''),new Article('', '', 0, '', ''), new Article('', '', 0, '', ''),new Article('', '', 0, '', ''), new Article('', '', 0, '', '')];
     this.cols = 5;
-    this.listArticles = [];
     this.pagedList = new Array<any>(50);
   }
 
   ngOnInit() {
-    this.listArticles = [];
+    // this.listArticles = [];
     this.eventsSubscription = this.events.subscribe(() => {console.log("Update index, new search"); this.updateIndex(0)});
 
   }

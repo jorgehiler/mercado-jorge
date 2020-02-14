@@ -15,7 +15,6 @@ export class DataService {
   }
 
   getNickname(idSeller: string){
-    console.log(this.apiURL + 'seller_id=' + idSeller + `&offset=0&limit=0`);
     return this.http.get(this.apiURL + 'seller_id=' + idSeller + `&offset=0&limit=0`)
   }
 }

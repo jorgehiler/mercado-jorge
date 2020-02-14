@@ -25,7 +25,7 @@
   </div>
 </mat-card> -->
 
-<div class="pointer shadown" #card (window:resize)="width=card.getBoundingClientRect().width">
+<div *ngIf="!loading" class="pointer shadown" #card (window:resize)="width=card.getBoundingClientRect().width">
 <mat-card class="pointer">
   <img mat-card-image  [src]="article.thumbnail" alt="Photo">
   <mat-card-title class="text-oneline align-start"><h4 class="mat-h3">{{article.title}}</h4></mat-card-title>
@@ -33,4 +33,11 @@
   <mat-card-subtitle class="align-start idSeller">{{article.seller.id}}</mat-card-subtitle>
   <mat-card-title class="align-start price text-oneline">$ {{price | number: '2.'}}</mat-card-title>
 </mat-card>
+</div>
+
+<div class="pointer shadown" *ngIf="loading" #card (window:resize)="width=card.getBoundingClientRect().width">
+  <mat-card class="pointer">
+    <mat-progress-spinner color="primary" mode="indeterminate">
+    </mat-progress-spinner>
+  </mat-card>
 </div>

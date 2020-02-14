@@ -9,7 +9,8 @@ import { Subject } from 'rxjs';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-
+  
+  loading: boolean;
   title = 'mercadolibre-jorge';
   txtSearch: string;
   resultSearch: any;
@@ -18,6 +19,7 @@ export class AppComponent implements OnInit {
   eventsSubject: Subject<void> = new Subject<void>();
 
   constructor(private searchService: DataService) {
+    this.loading = false;
   }
 
   ngOnInit(): void {
@@ -26,7 +28,6 @@ export class AppComponent implements OnInit {
 
   searchArticles(elementSearch: { txtSearch: string }) { //Este evento se origino en navbar
     this.txtSearch = elementSearch.txtSearch;
-    console.log('Desde component: ' + elementSearch.txtSearch);
     this.getSearch(elementSearch.txtSearch, '0');
     this.emitEventToChild();
   }
@@ -36,12 +37,12 @@ export class AppComponent implements OnInit {
     if(offSet === 1) {
       offSet = 0;
     }
-    console.log("Buca por paginator")
     console.log(this.txtSearch);
     this.getSearch(this.txtSearch, '' + offSet);
   }
 
   getSearch(txtSearch: string, offSet: string) {
+    this.loading = true;
     this.searchService.getSearch(txtSearch, offSet)
       .subscribe(
         res => {
@@ -49,8 +50,7 @@ export class AppComponent implements OnInit {
           this.resultSearch = res;
           this.listArticles = this.resultSearch.results;
           this.totalResults = this.resultSearch.paging.total;
-          console.log(`total Resultados: ${this.totalResults}`);
-          console.log('lista de articulos en component' + this.listArticles);
+          this.loading = false;
         },
         err => console.log('error' + err)
       );
@@ -58,7 +58,6 @@ export class AppComponent implements OnInit {
 
 
   emitEventToChild() {
-    console.log("emitir evento");
     this.eventsSubject.next();
   }
 
