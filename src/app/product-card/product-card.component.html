@@ -31,6 +31,6 @@
   <mat-card-title class="text-oneline align-start"><h4 class="mat-h3">{{article.title}}</h4></mat-card-title>
   <mat-card-subtitle class="align-start nameSeller text-oneline">{{nameSeller}}</mat-card-subtitle>
   <mat-card-subtitle class="align-start idSeller">{{article.seller.id}}</mat-card-subtitle>
-  <mat-card-title class="align-start price">{{article.price}}</mat-card-title>
+  <mat-card-title class="align-start price text-oneline">$ {{price | number: '2.'}}</mat-card-title>
 </mat-card>
 </div>

@@ -13,8 +13,10 @@ export class ProductCardComponent implements  OnChanges{
   @Input() article: any;
   nameSeller: string;
   aux: any;
+  price: number;
 
   constructor(private serviceMercado: DataService) {
+    this.price = 543454;
     this.nameSeller = 'Loading';
   }
 
@@ -22,13 +24,13 @@ export class ProductCardComponent implements  OnChanges{
     if(changes.article) {
       this.serviceMercado.getNickname(this.article.seller.id)
       .subscribe(
-        res => {console.log('respuesta'); 
-        console.log(res);
+        res => {console.log('respuesta');         
         this.aux = res;
-        console.log(this.aux.seller.nickname);
         this.nameSeller = this.aux.seller.nickname;
+        console.log(res);
       }
       );
+      this.price = this.article.price; //Convertir a number y agregar punto decimal 
     }
   }
 

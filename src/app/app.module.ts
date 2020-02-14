@@ -22,6 +22,7 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { ProductCardComponent } from './product-card/product-card.component';
 import { GridProductsComponent } from './grid-products/grid-products.component';
 import { DataService } from './data.service';
+import { CurrencyFormatPipe } from './currency-format.pipe';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { DataService } from './data.service';
     NavbarComponent,
     ProductCardComponent,
     GridProductsComponent,
+    CurrencyFormatPipe,
 
   ],
   imports: [
