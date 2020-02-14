@@ -70,6 +70,7 @@ export class GridProductsComponent implements OnInit, OnChanges{
     console.log(this.listArticles);
     this.cols = 5;
     this.listArticles = [];
+    this.pagedList = new Array<any>(50);
   }
 
   ngOnInit() {
@@ -85,7 +86,12 @@ export class GridProductsComponent implements OnInit, OnChanges{
     if (endIndex > this.length) {
       endIndex = this.length;
     }
-    this.pagedList = this.listArticles.slice(startIndex, endIndex);
+
+    let algo = this.listArticles.slice(0, this.pageSize);
+    this.pagedList.forEach((item,index) => {
+      item[index] = algo[index];
+    })
+
     this.pageSize = event.pageSize;
     let next = event.pageIndex - event.previousPageIndex;
 
