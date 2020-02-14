@@ -19,10 +19,7 @@
   height:185px;
   margin:0 10px;
   pointer-events: all;
-}
-
-.mat-card:hover {
-  /* background-color: #f7ff004f; */
+  cursor: pointer;
 }
 
 mat-card img{

@@ -23,6 +23,7 @@ import { ProductCardComponent } from './product-card/product-card.component';
 import { GridProductsComponent } from './grid-products/grid-products.component';
 import { DataService } from './data.service';
 import { CurrencyFormatPipe } from './currency-format.pipe';
+import { CardNoticeComponent } from './card-notice/card-notice.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { CurrencyFormatPipe } from './currency-format.pipe';
     ProductCardComponent,
     GridProductsComponent,
     CurrencyFormatPipe,
+    CardNoticeComponent,
 
   ],
   imports: [

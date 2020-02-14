@@ -20,6 +20,7 @@ export class GridProductsComponent implements OnInit, OnChanges{
   @ViewChild('paginator', {static: false}) paginator: MatPaginator;
   @Output() changePaginator = new EventEmitter<{offSet: number}>();
   @Input() totalResults: number;
+  cardNotice: boolean;
 
   screenHeight: number;
   screenWidth: number;
@@ -29,7 +30,7 @@ export class GridProductsComponent implements OnInit, OnChanges{
 
 
   @Input() events: Observable<void>;
-  
+
   private eventsSubscription: Subscription;
 
 //perueba
@@ -45,8 +46,15 @@ export class GridProductsComponent implements OnInit, OnChanges{
     if(changes.listArticles) {
       this.pagedList = this.listArticles.slice(0, this.pageSize);
       this.getScreenSize();
+      if(this.pagedList.length === 0) {
+        this.cardNotice = true;
+        console.log('mostrar aviso');
+      } else {
+        this.cardNotice = false;
+      }
       // this.paginator.pageIndex = 0;
     }
+
   }
 
   setPageSizeOptions(setPageSizeOptionsInput: string) {
@@ -56,6 +64,7 @@ export class GridProductsComponent implements OnInit, OnChanges{
   }
 
   constructor(private searchService: DataService) {
+    this.cardNotice = false;
     this.totalResults=0;
     this.listArticles = [];
     console.log(this.listArticles);
@@ -64,7 +73,7 @@ export class GridProductsComponent implements OnInit, OnChanges{
   }
 
   ngOnInit() {
-    this.listArticles = [];    
+    this.listArticles = [];
     this.eventsSubscription = this.events.subscribe(() => {console.log("Update index, new search"); this.updateIndex(0)});
 
   }

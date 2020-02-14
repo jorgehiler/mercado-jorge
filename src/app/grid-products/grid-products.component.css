@@ -12,3 +12,16 @@ div {
 mat-paginator {
   background-color: #ebebeb;
 }
+
+.aviso {
+  text-align: -webkit-center;
+}
+
+mat-card {
+  text-align: start;
+}
+
+p {
+  margin: 3%;
+
+}

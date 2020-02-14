@@ -1,0 +1,24 @@
+p {
+  display: list-item
+}
+
+.card {
+  max-width: 400px;
+}
+
+.header-image {
+  background-image: url('https://img2.freepng.es/20180410/azq/kisspng-magnifying-glass-clip-art-magnifying-glass-5acc5e3971c904.8700951115233429054661.jpg');
+  background-size: cover;
+}
+
+mat-card-title {
+  font-weight: bold;
+}
+
+mat-card {
+  text-align: start;
+}
+
+p {
+      margin: 3%;
+}
