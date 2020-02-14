@@ -1,4 +1,4 @@
-<div *ngIf="!cardNotice" class="container">
+<div *ngIf="!cardNotice && !flagWelcom" class="container">
   <mat-grid-list [cols]="cols" rowHeight="4:5" gutterSize='5'>
     <mat-grid-tile *ngFor="let article of pagedList">
       <app-product-card [loading]="loading" [article]='article'></app-product-card>
@@ -11,4 +11,8 @@
 
 <div *ngIf="cardNotice" class="container aviso">
   <app-card-notice></app-card-notice>
+</div>
+
+<div *ngIf="flagWelcom">
+  <h1>Bienvenido</h1>
 </div>

@@ -43,17 +43,20 @@ export class AppComponent implements OnInit {
 
   getSearch(txtSearch: string, offSet: string) {
     this.loading = true;
-    this.searchService.getSearch(txtSearch, offSet)
-      .subscribe(
-        res => {
-          console.log(res);
-          this.resultSearch = res;
-          this.listArticles = this.resultSearch.results;
-          this.totalResults = this.resultSearch.paging.total;
-          this.loading = false;
-        },
-        err => console.log('error' + err)
-      );
+    setTimeout(()=>{
+      this.searchService.getSearch(txtSearch, offSet)
+        .subscribe(
+          res => {
+            console.log(res);
+            this.resultSearch = res;
+            this.listArticles = this.resultSearch.results;
+            this.totalResults = this.resultSearch.paging.total;
+            this.loading = false;
+          },
+          err => console.log('error' + err)
+        );
+      
+    },0)
   }
 
 

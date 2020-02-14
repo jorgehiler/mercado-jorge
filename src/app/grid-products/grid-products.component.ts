@@ -26,6 +26,8 @@ export class GridProductsComponent implements OnInit, OnChanges{
   screenHeight: number;
   screenWidth: number;
 
+  flagWelcom: boolean;
+
 
   pageEvent: PageEvent;
 
@@ -44,7 +46,7 @@ export class GridProductsComponent implements OnInit, OnChanges{
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    if(changes.listArticles && this.listArticles) {
+    if(changes.listArticles && this.listArticles) { //Que no sea indefinido listArticles
       console.log("arricles")
       console.log(this.listArticles)
       this.pagedList = this.listArticles.slice(0, this.pageSize);
@@ -57,7 +59,11 @@ export class GridProductsComponent implements OnInit, OnChanges{
         this.cardNotice = false;
       }
       // this.paginator.pageIndex = 0;
+      if(this.flagWelcom){
+        this.flagWelcom = false;
+      }
     }
+
 
   }
 
@@ -68,15 +74,15 @@ export class GridProductsComponent implements OnInit, OnChanges{
   }
 
   constructor(private searchService: DataService) {
+    this.flagWelcom=true;
     this.cardNotice = false;
     this.totalResults=0;
-    this.listArticles = [new Article('', '', 0, '', ''), new Article('', '', 0, '', ''), new Article('', '', 0, '', ''), new Article('', '', 0, '', ''), new Article('', '', 0, '', ''), new Article('', '', 0, '', ''),new Article('', '', 0, '', ''), new Article('', '', 0, '', ''),new Article('', '', 0, '', ''), new Article('', '', 0, '', ''), new Article('', '', 0, '', ''), new Article('', '', 0, '', ''), new Article('', '', 0, '', ''), new Article('', '', 0, '', ''), new Article('', '', 0, '', ''), new Article('', '', 0, '', ''),new Article('', '', 0, '', ''), new Article('', '', 0, '', ''),new Article('', '', 0, '', ''), new Article('', '', 0, '', ''), new Article('', '', 0, '', ''), new Article('', '', 0, '', ''), new Article('', '', 0, '', ''), new Article('', '', 0, '', ''), new Article('', '', 0, '', ''), new Article('', '', 0, '', ''),new Article('', '', 0, '', ''), new Article('', '', 0, '', ''),new Article('', '', 0, '', ''), new Article('', '', 0, '', ''), new Article('', '', 0, '', ''), new Article('', '', 0, '', ''), new Article('', '', 0, '', ''), new Article('', '', 0, '', ''), new Article('', '', 0, '', ''), new Article('', '', 0, '', ''),new Article('', '', 0, '', ''), new Article('', '', 0, '', ''),new Article('', '', 0, '', ''), new Article('', '', 0, '', ''), new Article('', '', 0, '', ''), new Article('', '', 0, '', ''), new Article('', '', 0, '', ''), new Article('', '', 0, '', ''), new Article('', '', 0, '', ''), new Article('', '', 0, '', ''),new Article('', '', 0, '', ''), new Article('', '', 0, '', ''),new Article('', '', 0, '', ''), new Article('', '', 0, '', '')];
     this.cols = 5;
     this.pagedList = new Array<any>(50);
   }
 
   ngOnInit() {
-    // this.listArticles = [];
+    this.loading = true;
     this.eventsSubscription = this.events.subscribe(() => {console.log("Update index, new search"); this.updateIndex(0)});
 
   }
@@ -107,7 +113,6 @@ export class GridProductsComponent implements OnInit, OnChanges{
   getScreenSize(event?) {
     this.screenHeight = window.innerHeight;
     this.screenWidth = window.innerWidth;
-    console.log(this.screenHeight, this.screenWidth);
     if (this.screenWidth >= 1650) {
       this.cols=8;
     } else if(this.screenWidth >= 1450) {
