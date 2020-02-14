@@ -22,7 +22,7 @@
 }
 
 .mat-card:hover {
-  background-color: #f7ff004f;
+  /* background-color: #f7ff004f; */
 }
 
 mat-card img{
@@ -63,6 +63,10 @@ mat-card-title {
 
 .pointer{
   pointer-events: auto;
+}
+
+mat-card:hover {
+  box-shadow: 10px 10px 5px grey;
 }
 
 

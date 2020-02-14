@@ -25,7 +25,7 @@
   </div>
 </mat-card> -->
 
-<div class="pointer" #card (window:resize)="width=card.getBoundingClientRect().width">
+<div class="pointer shadown" #card (window:resize)="width=card.getBoundingClientRect().width">
 <mat-card class="pointer">
   <img mat-card-image  [src]="article.thumbnail" alt="Photo">
   <mat-card-title class="text-oneline align-start"><h4 class="mat-h3">{{article.title}}</h4></mat-card-title>
