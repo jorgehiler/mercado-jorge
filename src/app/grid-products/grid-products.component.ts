@@ -1,5 +1,9 @@
 import { Component, OnInit, Input, OnChanges, DoCheck, SimpleChanges, ViewChild, EventEmitter, Output, HostListener } from '@angular/core';
-import { PageEvent, MatPaginatorIntl, MatPaginator } from '@angular/material';
+import { MatPaginator } from '@angular/material/paginator';
+import { PageEvent } from '@angular/material/paginator';
+
+
+
 import { Article } from '../article';
 import { DataService } from '../data.service';
 import { Observable, Subscription } from 'rxjs';
@@ -29,7 +33,6 @@ export class GridProductsComponent implements OnInit, OnChanges{
   flagWelcom: boolean;
 
 
-  pageEvent: PageEvent;
 
 
   @Input() events: Observable<void>;
