@@ -23,5 +23,8 @@ mat-card {
 
 p {
   margin: 3%;
+}
 
+.welcome {
+  text-align: center;
 }
