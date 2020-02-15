@@ -1,19 +1,19 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {
-  MatButtonModule,
-  MatPaginatorModule,
-  MatMenuModule,
-  MatToolbarModule,
-  MatIconModule,
-  MatCardModule,
-  MatFormFieldModule,
-  MatAutocompleteModule,
-  MatInputModule,
-  MatGridListModule,
-  MatProgressSpinnerModule
-} from '@angular/material';
+
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatMenuModule} from '@angular/material/menu';
+import {MatIconModule} from '@angular/material/icon';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatCardModule} from '@angular/material/card';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import {MatInputModule} from '@angular/material/input';
+import {MatGridListModule} from '@angular/material/grid-list';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+
+
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -26,6 +26,7 @@ import { GridProductsComponent } from './grid-products/grid-products.component';
 import { DataService } from './data.service';
 import { CurrencyFormatPipe } from './currency-format.pipe';
 import { CardNoticeComponent } from './card-notice/card-notice.component';
+
 
 @NgModule({
   declarations: [
