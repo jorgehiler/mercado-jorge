@@ -17,7 +17,7 @@ export class GridProductsComponent implements OnInit, OnChanges{
   @Input() listArticles: any[];
   pagedList: Article[];
   cols: number;
-  @ViewChild('paginator', {static: false}) paginator: MatPaginator;
+  @ViewChild('paginator') paginator: MatPaginator;
   @Output() changePaginator = new EventEmitter<{offSet: number}>();
   @Input() totalResults: number;
   @Input() loading: boolean;
