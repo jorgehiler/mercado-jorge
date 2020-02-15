@@ -67,6 +67,15 @@ mat-card:hover {
 }
 
 
+.uploader-status ::ng-deep .mat-progress-spinner circle, .mat-spinner circle {
+  stroke: #e2dddd;
+}
+
+.spinner {
+  margin-top: 30px;
+  margin-left: 20px;
+}
+
 /* mat-card {
   width: calc(100% - 70px);
   height: calc(100% - 70px);

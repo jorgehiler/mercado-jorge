@@ -5,7 +5,7 @@
     </mat-grid-tile>
   </mat-grid-list>
   <mat-paginator *ngIf="!cardNotice" #paginator [length]="totalResults" [pageSize]="pageSize"
-    [pageSizeOptions]="pageSizeOptions" (page)="pageEvent = OnPageChange($event)">
+     (page)="pageEvent = OnPageChange($event)">
   </mat-paginator>
 </div>
 
@@ -13,6 +13,10 @@
   <app-card-notice></app-card-notice>
 </div>
 
-<div *ngIf="flagWelcom">
-  <h1>Bienvenido</h1>
+<div *ngIf="flagWelcom" class="container">
+  <mat-card>
+    <h1>¡Bienvenido a MercadoJorge!</h1>
+    <p>Los mejores precios</p>
+    <p>los mejores productos</p>
+  </mat-card>
 </div>

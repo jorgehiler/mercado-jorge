@@ -1,4 +1,3 @@
 <router-outlet></router-outlet>
 <app-navbar (searchedArticles)="searchArticles($event)"></app-navbar>
 <app-grid-products [loading]="loading" (changePaginator)="searchArticlesOffset($event)"  [events]="eventsSubject.asObservable()" [totalResults]="totalResults" [listArticles]="listArticles" style="background-color: #ebebeb;"></app-grid-products>
-<!-- <app-product-card [article] = 'article'></app-product-card> -->

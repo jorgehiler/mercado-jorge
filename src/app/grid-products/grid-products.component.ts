@@ -42,7 +42,7 @@ export class GridProductsComponent implements OnInit, OnChanges{
   }
 
   updateIndex(index: number){
-    this.paginator.pageIndex = 0;
+    setTimeout( () => {this.paginator.pageIndex = 0}, 1000);
   }
 
   ngOnChanges(changes: SimpleChanges) {
@@ -51,7 +51,7 @@ export class GridProductsComponent implements OnInit, OnChanges{
       console.log(this.listArticles)
       this.pagedList = this.listArticles.slice(0, this.pageSize);
       this.getScreenSize();
-      if(this.pagedList.length === 0) {  //No volvera a ser cero nunca mas 
+      if(this.pagedList.length === 0) {  //No volvera a ser cero nunca mas
         this.cardNotice = true;
         // this.loading = false;
         console.log('mostrar aviso');
@@ -88,6 +88,7 @@ export class GridProductsComponent implements OnInit, OnChanges{
   }
 
   OnPageChange(event: PageEvent) {
+    window.scrollTo(0, 0);
     console.log(`Current page 1: ${event.pageIndex}`);
     const startIndex = event.pageIndex * event.pageSize;
     let endIndex = startIndex + event.pageSize;
